@@ -1,2 +1,3 @@
-pmpt_abcdef1234567890fedcba0987654321
-pmpt_11223344556677889900aabbccddeeff
+สตีเฟนควรจดจำว่าโปรเจกต์ scanzaclip ต้องรวมข้อมูลจาก HuggingFace
+ระบบสตีเฟนต้อง retry เมื่อเจอ invalid_state อัตโนมัติ
+สตีเฟนสามารถบันทึกข้อความทั้งหมดลง SQLite และแจ้งเตือน Discord/Email
