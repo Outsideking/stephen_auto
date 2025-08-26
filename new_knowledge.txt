@@ -1,3 +1,5 @@
-สตีเฟนควรจดจำว่าโปรเจกต์ scanzaclip ต้องรวมข้อมูลจาก HuggingFace
-ระบบสตีเฟนต้อง retry เมื่อเจอ invalid_state อัตโนมัติ
-สตีเฟนสามารถบันทึกข้อความทั้งหมดลง SQLite และแจ้งเตือน Discord/Email
+สตีเฟนต้องบันทึกข้อความ Prompt และ Knowledge ลง SQLite อัตโนมัติ
+สตีเฟนต้อง retry และรีเซ็ต client เมื่อเจอ invalid_state
+สตีเฟนสามารถแจ้งเตือนผ่าน Discord หรือ Email เมื่อมี Prompt หรือ Knowledge ใหม่
+สตีเฟนต้องรวม Prompt ใหม่จาก new_prompts.txt ไป prompts.txt อัตโนมัติ
+สตีเฟนสามารถทำงานอัตโนมัติทุก 1 นาที
