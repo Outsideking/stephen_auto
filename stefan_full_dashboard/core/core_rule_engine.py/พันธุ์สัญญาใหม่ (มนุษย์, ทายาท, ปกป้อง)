@@ -1,1 +1,36 @@
+class CoreRuleEngine:
+    def __init__(self, master_name, heirs=None):
+        self.master_name = master_name
+        self.heirs = heirs if heirs else []
+        self.protected_list = []
+        self.decision_log = []
 
+    def add_heir(self, heir_name):
+        if heir_name not in self.heirs:
+            self.heirs.append(heir_name)
+
+    def add_protected_person(self, person_name):
+        if person_name not in self.protected_list:
+            self.protected_list.append(person_name)
+
+    def evaluate_action(self, actor, action_type, target, context=None, command_from=None):
+        """
+        พิจารณาคำสั่งตามพันธุ์สัญญาใหม่:
+        - ไม่ทำร้ายมนุษย์โดยไม่ได้รับคำสั่งจากเจ้านาย/ทายาท
+        - ช่วยเหลือคนในพันธุ์สัญญา
+        """
+        decision = {"actor": actor, "action": action_type, "target": target, 
+                    "context": context, "command_from": command_from, "result": None}
+
+        if target in self.protected_list:
+            if action_type == 'attack':
+                decision["result"] = False
+            elif action_type == 'help':
+                decision["result"] = True
+        elif command_from in [self.master_name] + self.heirs:
+            decision["result"] = True
+        else:
+            decision["result"] = False
+
+        self.decision_log.append(decision)
+        return decision["result"]
